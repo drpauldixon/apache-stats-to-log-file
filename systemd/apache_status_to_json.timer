@@ -1,0 +1,12 @@
+[Unit]
+Description=Run Apache status to JSON log file every minute
+Requires=httpd24-httpd.service
+Requires=apache_status_to_json.service
+After=httpd24-httpd.service
+
+[Timer]
+Unit=apache_status_to_json.service
+OnCalendar=*-*-* *:*:00
+
+[Install]
+WantedBy=timers.target

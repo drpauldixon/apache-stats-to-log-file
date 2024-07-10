@@ -1,0 +1,15 @@
+Description=Apache status to JSON log file
+Requires=httpd24-httpd.service
+After=httpd24-httpd.service
+
+[Unit]
+Wants=apache_status_to_json.timer
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/php /etc/httpd-helpers/apache_status_to_json.php
+User=apache
+Group=apache
+
+[Install]
+WantedBy=multi-user.target
